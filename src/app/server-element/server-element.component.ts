@@ -10,7 +10,9 @@ import {
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-  OnDestroy
+  OnDestroy,
+  ViewChild,
+  ElementRef
 } from '@angular/core';
 
 @Component({
@@ -30,6 +32,7 @@ export class ServerElementComponent implements
   OnDestroy {
 
   @Input() name: string;
+  @ViewChild('heading', {static: true}) header: ElementRef;
 
   constructor() {
     console.log('constructor called');
@@ -41,6 +44,7 @@ export class ServerElementComponent implements
 
   ngOnInit(): void {
     console.log('ngOnInit called');
+    console.log('Text content: ' + this.header.nativeElement.textContent);
   }
 
   ngDoCheck() {
